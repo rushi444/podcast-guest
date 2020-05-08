@@ -1,10 +1,13 @@
 import { makeSchema } from '@nexus/schema'
 import { nexusPrismaPlugin } from 'nexus-prisma'
 import * as path from 'path'
+import { User } from './types/models/User'
+import { Query } from './types/Query'
+import { Mutation } from './types/Mutation'
 
 
-export const schema =  makeSchema({
-    types: [],
+export default makeSchema({
+    types: [User, Query, Mutation],
     plugins: [nexusPrismaPlugin()],
     outputs: {
         typegen: path.join(

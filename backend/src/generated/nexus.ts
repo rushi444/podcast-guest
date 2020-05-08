@@ -19,6 +19,10 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  UserWhereUniqueInput: { // input type
+    email?: string | null; // String
+    id?: number | null; // Int
+  }
 }
 
 export interface NexusGenEnums {
@@ -26,6 +30,11 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   Query: {};
+  User: { // root type
+    email: string; // String!
+    id: number; // Int!
+    name?: string | null; // String
+  }
   String: string;
   Int: number;
   Float: number;
@@ -34,15 +43,30 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
 }
 
 export interface NexusGenFieldTypes {
   Query: { // field return type
-    ok: boolean; // Boolean!
+    users: NexusGenRootTypes['User'][]; // [User!]!
+  }
+  User: { // field return type
+    email: string; // String!
+    id: number; // Int!
+    name: string | null; // String
   }
 }
 
 export interface NexusGenArgTypes {
+  Query: {
+    users: { // args
+      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -50,9 +74,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query";
+export type NexusGenObjectNames = "Query" | "User";
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = "UserWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 
