@@ -2,6 +2,10 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  createOneUser(data: UserCreateInput!): User!
+}
+
 type Query {
   users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, skip: Int): [User!]!
 }
@@ -9,6 +13,11 @@ type Query {
 type User {
   email: String!
   id: Int!
+  name: String
+}
+
+input UserCreateInput {
+  email: String!
   name: String
 }
 
