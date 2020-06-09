@@ -1,13 +1,14 @@
 import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient()
+export const prisma = new PrismaClient()
 
-export type Context = {
+interface IContext {
     prisma: PrismaClient
 }
 
-export const context = ({ req }: any): Context => {
+export const createContext = (): IContext => {
     return {
         prisma
     }
+
 }

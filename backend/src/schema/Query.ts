@@ -1,4 +1,4 @@
-import { queryType } from "@nexus/schema";
+import { queryType } from '@nexus/schema'
 
 export const Query = queryType({
     definition: t => {
