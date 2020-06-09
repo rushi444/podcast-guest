@@ -6,9 +6,12 @@ interface IContext {
     prisma: PrismaClient
 }
 
-export const createContext = (): IContext => {
+export const createContext = ({ event, context }: any): any => {
     return {
+        headers: event.headers,
+        functionName: context.functionName,
+        event,
+        context,
         prisma
     }
-
 }

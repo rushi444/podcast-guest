@@ -1,3 +1,4 @@
+org: rushi44
 app: podcast-app-api
 service: apollo-lambda
 provider:
@@ -16,3 +17,5 @@ functions:
           path: graphql
           method: get
           cors: true
+plugins:
+  - serverless-plugin-typescript

@@ -5,10 +5,11 @@ import * as path from 'path'
 import { User } from './models/User'
 import { Query } from './Query'
 import { Mutation } from './Mutation'
+import { GraphQLSchema } from 'graphql'
 
-export default makeSchema({
+export const schema: GraphQLSchema = makeSchema({
     types: [Query, Mutation, User],
-    plugins: [nexusPrismaPlugin()],
+    plugins: [nexusPrismaPlugin({shouldGenerateArtifacts: false})],
     outputs: {
         typegen: path.join(
             __dirname,
